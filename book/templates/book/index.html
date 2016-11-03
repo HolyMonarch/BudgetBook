@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'book/style.css' %}" />
+
+{% if output %}
+    <ul>
+    {% for row in output %}
+        <li>{{ row }}<br></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are purchased.</p>
+{% endif %}
+
+
+{% if latest_item_list %}
+    <ul>
+    {% for item in latest_item_list %}
+        <li><a href="{% url 'book:detail' item.id %}">{{ item.item_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
